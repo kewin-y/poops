@@ -18,8 +18,13 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 set(SOURCE_FILES
-    src/main.cpp
-    src/Layer.cpp
+        src/Dense_Layer.cpp
+        src/Dense_Layer.hpp
+        src/main.cpp
+        src/ReLU.cpp
+        src/ReLU.hpp
+        src/Softmax.cpp
+        src/Softmax.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
