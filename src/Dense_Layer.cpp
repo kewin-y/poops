@@ -5,32 +5,32 @@
 namespace unn
 {
 Dense_Layer::Dense_Layer(unsigned int nin, unsigned int nout,
-                         unsigned int batches)
-    : nin{nin}, nout{nout}, batches{batches}
+                         unsigned int samples)
+    : nin{nin}, nout{nout}, samples{samples}
 {
-        weights = Eigen::MatrixXd::Random(nout, nin);
-        biases = Eigen::VectorXd::Zero(nout);
+    weights = Eigen::MatrixXd::Random(nout, nin);
+    biases = Eigen::VectorXd::Zero(nout);
 }
 
 Eigen::MatrixXd Dense_Layer::operator()(const Eigen::MatrixXd &inputs) const
 {
-        bool valid_in_nrows = inputs.rows() == nin;
-        bool valid_in_ncols = inputs.cols() == batches;
+    bool valid_in_nrows = inputs.rows() == nin;
+    bool valid_in_ncols = inputs.cols() == samples;
 
-        assert(
-            ((valid_in_nrows && valid_in_ncols) && "inputs has invalid size"));
+    assert(
+        ((valid_in_nrows && valid_in_ncols) && "inputs has invalid size"));
 
-        auto outputs = (weights * inputs).colwise() + biases;
+    auto outputs = (weights * inputs).colwise() + biases;
 
-        bool valid_out_nrows;
-        bool valid_out_ncols;
+    bool valid_out_nrows;
+    bool valid_out_ncols;
 
-        valid_out_nrows = outputs.rows() == nout;
-        valid_out_ncols = outputs.cols() == batches;
+    valid_out_nrows = outputs.rows() == nout;
+    valid_out_ncols = outputs.cols() == samples;
 
-        assert(((valid_out_nrows && valid_out_ncols) &&
-                "outputs has invalid size"));
+    assert(((valid_out_nrows && valid_out_ncols) &&
+            "outputs has invalid size"));
 
-        return outputs;
+    return outputs;
 }
 } // namespace unn

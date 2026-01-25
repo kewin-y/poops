@@ -4,6 +4,7 @@ namespace unn
 {
 Eigen::MatrixXd ReLU::operator()(const Eigen::MatrixXd &inputs) const
 {
-        return inputs.cwiseMax(0);
+    // cwise means "coefficient-wise"
+    return inputs.cwiseMax(0);
 }
 } // namespace unn
