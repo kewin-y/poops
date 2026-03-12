@@ -6,17 +6,17 @@
 namespace unn
 {
 struct Dense_Layer {
-    const unsigned int nin;
-    const unsigned int nout;
-    const unsigned int samples;
+    const unsigned int n_in;
+    const unsigned int n_out;
+    const unsigned int n_samples;
 
-    // Each row in weights represents the weight for a specific output neuron
+    // Each row of `weights` represents the weight for a specific output neuron
     Eigen::MatrixXd weights;
 
     // Column vector containing all the biases Entry `i` of biases corresponds to the bias of output neuron `i`
     Eigen::VectorXd biases;
 
-    Dense_Layer(unsigned int nin, unsigned int nout, unsigned int samples);
+    Dense_Layer(unsigned int n_in, unsigned int n_out, unsigned int n_samples);
 
     // Forward Pass
     Eigen::MatrixXd operator()(const Eigen::MatrixXd &inputs) const;

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.31...4.0)
 include (FetchContent)
 
 # Project
-project(unnamed_nn LANGUAGES CXX)
+project(poops LANGUAGES CXX)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
