@@ -10,21 +10,25 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 FetchContent_Declare(
-    eigen
-    GIT_REPOSITORY https://gitlab.com/libeigen/eigen
-    GIT_TAG 5.0.0
+  eigen
+  GIT_REPOSITORY https://gitlab.com/libeigen/eigen
+  GIT_TAG 5.0.0
 )
 
 FetchContent_MakeAvailable(eigen)
 
 set(SOURCE_FILES
-        src/Dense_Layer.cpp
-        src/Dense_Layer.hpp
-        src/main.cpp
-        src/ReLU.cpp
-        src/ReLU.hpp
-        src/Softmax.cpp
-        src/Softmax.hpp
+  src/Layer_Dense.cpp
+  src/main.cpp
+  src/ReLU.cpp
+  src/Softmax.cpp
+  src/Loss_CCE.cpp
+
+  src/Layer_Dense.hpp
+  src/main.hpp
+  src/ReLU.hpp
+  src/Softmax.hpp
+  src/Loss_CCE.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
