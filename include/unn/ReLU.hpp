@@ -8,6 +8,7 @@ namespace unn
 {
 struct ReLU : Layer {
   ReLU() = default;
+
   Eigen::MatrixXd operator()(const Eigen::MatrixXd &inputs);
   void backward(const Eigen::MatrixXd &d_next) override;
 

@@ -11,7 +11,6 @@ struct Layer_Dense : Layer {
   Layer_Dense(Eigen::Index n_in, Eigen::Index n_out, Eigen::Index n_samples);
 
   Eigen::MatrixXd operator()(const Eigen::MatrixXd &inputs);
-
   void backward(const Eigen::MatrixXd &d_next) override;
 
 private:
@@ -24,8 +23,7 @@ private:
   // shape(weights) = (n_out, n_in)
   Eigen::MatrixXd weights;
 
-  // Each entry b_i of `biases` corresponds to the bias of neuron `i`
-  Eigen::VectorXd biases;
+  Eigen::VectorXd biases; // Each entry b_i of `biases` corresponds to the bias of neuron `i`
 
   // shape(inputs) = (n_in, n_samples).
   Eigen::MatrixXd in;
